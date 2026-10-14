@@ -159,3 +159,64 @@ A successful vulnerability scan does not guarantee that an application is comple
 ## 👨‍💻 Learning Outcomes
 
 This project demonstrates practical experience with Python, Docker, Git, GitHub Actions, automated testing, and basic container security.
+
+
+
+
+## ☁️ AWS EC2 Deployment
+
+### Deployment Overview
+
+The Python DevOps application was successfully deployed to an Ubuntu server on Amazon EC2 using Docker.
+
+**Deployment environment**
+- Cloud provider: AWS
+- Service: Amazon EC2
+- Region: Mumbai (`ap-south-1`)
+- Operating system: Ubuntu Server 24.04 LTS
+- Containerization: Docker
+- Application port: 8000
+- Health endpoint: `/health`
+
+### Deployment Steps
+
+1. Launched an Ubuntu EC2 instance.
+2. Connected to the instance securely using SSH and a private key.
+3. Installed and verified Docker Engine.
+4. Transferred the application source files to the server.
+5. Built the Docker image on EC2.
+6. Ran the container with a read-only root filesystem, dropped Linux capabilities, and other security restrictions.
+7. Configured the EC2 security group for application access.
+8. Verified the application through a browser and tested the health endpoint.
+
+### Verification
+
+The homepage loaded successfully from the EC2 public address, and the `/health` endpoint returned the expected JSON response.
+
+### Deployment Evidence
+
+Screenshots captured during the deployment are stored in `docs/screenshots/`.
+
+- EC2 instance and status checks
+- Successful SSH connection
+- Docker installation and test
+- Project files on EC2
+- Docker image build
+- Running container
+- Application homepage
+- Health-check response
+- GitHub Actions workflow
+
+### Cleanup
+
+The temporary EC2 deployment was shut down after testing and documentation. Refer to the AWS console to verify the final instance state and confirm that no unnecessary billable resources remain.
+
+### Lessons Learned
+
+This project provided practical experience with Python, Docker, container hardening, Git, GitHub Actions, automated testing, vulnerability scanning, Linux administration, and AWS EC2 deployment.
+
+### Limitations
+
+- The application uses HTTP rather than HTTPS.
+- The CI workflow builds and scans the image but does not publish it or automatically deploy to AWS.
+- A successful vulnerability scan does not guarantee complete application security.
